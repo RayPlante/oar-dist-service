@@ -201,7 +201,6 @@
                     <includes>
                         <include>**/*IT.java</include>
                     </includes>
-                    <forkMode>once</forkMode>
                 </configuration>
             </plugin>
             <plugin>

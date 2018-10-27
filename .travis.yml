@@ -9,4 +9,5 @@ before_install:
   - cd docker && bash ./dockbuild.sh
 
 script:
-  - bash ./testall
+  - bash ./testall || { [ -d target/surefire-reports ] && cat target/surefire-reports/*.dumpstream; false; }
+

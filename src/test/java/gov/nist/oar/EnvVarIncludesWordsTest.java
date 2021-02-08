@@ -45,9 +45,11 @@ public class EnvVarIncludesWordsTest {
 
     @Test
     public void testWordsInEnv() {
+        System.out.printf("Environment contains %d vars.\n", System.getenv().size());
         for(Map.Entry<String,String> e : System.getenv().entrySet())
-            System.err.printf("%s=%s\n", e.getKey(), e.getValue());
+            System.out.printf("%s=%s\n", e.getKey(), e.getValue());
         assertNotNull(System.getenv("PATH"));
+        System.out.printf("PATH: %s\n", System.getenv("PATH"));
         Collection<String> words = EnvVarIncludesWords.wordsInEnv("PATH");
         assertEquals(1, words.size());
 

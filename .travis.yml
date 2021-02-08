@@ -11,4 +11,4 @@ before_install:
   - printenv
 
 script:
-  - bash ./testall.docker
+  - bash ./testall

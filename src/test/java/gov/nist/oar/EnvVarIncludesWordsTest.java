@@ -12,6 +12,7 @@
 package gov.nist.oar;
 
 import java.util.Collection;
+import java.util.Map;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -44,6 +45,9 @@ public class EnvVarIncludesWordsTest {
 
     @Test
     public void testWordsInEnv() {
+        for(Map.Entry<String,String> e : System.getenv().entrySet())
+            System.err.printf("%s=%s\n", e.getKey(), e.getValue());
+        assertNotNull(System.getenv("PATH"));
         Collection<String> words = EnvVarIncludesWords.wordsInEnv("PATH");
         assertEquals(1, words.size());
 

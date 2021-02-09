@@ -12,7 +12,6 @@
 package gov.nist.oar;
 
 import java.util.Collection;
-import java.util.Map;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -45,12 +44,9 @@ public class EnvVarIncludesWordsTest {
 
     @Test
     public void testWordsInEnv() {
-        System.out.printf("Environment contains %d vars.\n", System.getenv().size());
-        for(Map.Entry<String,String> e : System.getenv().entrySet())
-            System.out.printf("%s=%s\n", e.getKey(), e.getValue());
-        assertNotNull(System.getenv("PATH"));
-        System.out.printf("PATH: %s\n", System.getenv("PATH"));
-        Collection<String> words = EnvVarIncludesWords.wordsInEnv("PATH");
+        assertNotNull("JAVA_HOME is not set as an environment var; consider changing this test",
+                      System.getenv("JAVA_HOME"));
+        Collection<String> words = EnvVarIncludesWords.wordsInEnv("JAVA_HOME");
         assertEquals(1, words.size());
 
         words = EnvVarIncludesWords.wordsInEnv("OAR_GOOBER");
